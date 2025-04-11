@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 
 <head>
     <meta charset="UTF-8">
@@ -17,24 +17,24 @@
     <nav class="navbar navbar-expand-lg fixed-top">
         <a class="navbar-brand" href="/home">BookStore</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Basculer la navigation">
             <i class="fas fa-bars"></i>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
                 <li class="nav-item">
                     <a class="nav-link" id="dashboardLink" href="/home">
-                        <i class="fas fa-tachometer-alt"></i> Dashboard
+                        <i class="fas fa-tachometer-alt"></i> Tableau de bord
                     </a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" id="usersLink" href="/user">
-                        <i class="fas fa-users"></i> Users
+                        <i class="fas fa-users"></i> Utilisateurs
                     </a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" id="rolesLink" href="/role">
-                        <i class="fas fa-user-tag"></i> Roles
+                        <i class="fas fa-user-tag"></i> Rôles
                     </a>
                 </li>
                 <li class="nav-item">
@@ -49,7 +49,7 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" id="outilsLink" href="/outil">
-                        <i class="fas fa-tools"></i> Outils
+                    <i class="fa-solid fa-pen-ruler"></i> Fournitures
                     </a>
                 </li>
                 <li class="nav-item">
@@ -64,7 +64,7 @@
                 </li>
             </ul>
 
-            <!-- Search Form -->
+            <!-- Formulaire de Recherche -->
             <form class="search-form">
                 <input class="form-control" type="search" placeholder="Rechercher..." aria-label="Search">
                 <button class="search-btn" type="submit">
@@ -72,7 +72,7 @@
                 </button>
             </form>
 
-            <!-- User Profile Dropdown -->
+            <!-- Menu déroulant Profil Utilisateur -->
             <div class="user-profile dropdown">
                 <a class="dropdown-toggle d-flex align-items-center" href="#" id="userDropdown" role="button"
                     data-bs-toggle="dropdown" aria-expanded="false">
@@ -82,30 +82,30 @@
                     <span class="d-none d-lg-inline text-white ms-1">Admin</span>
                 </a>
                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
-                    <li><a class="dropdown-item" href="#"><i class="fas fa-user-circle me-2"></i>Profile</a></li>
-                    <li><a class="dropdown-item" href="#"><i class="fas fa-cog me-2"></i>Settings</a></li>
+                    <li><a class="dropdown-item" href="#"><i class="fas fa-user-circle me-2"></i>Profil</a></li>
+                    <li><a class="dropdown-item" href="#"><i class="fas fa-cog me-2"></i>Paramètres</a></li>
                     <li>
                         <hr class="dropdown-divider">
                     </li>
-                    <li><a class="dropdown-item" href="logout"><i class="fas fa-sign-out-alt me-2"></i>Logout</a></li>
+                    <li><a class="dropdown-item" href="logout"><i class="fas fa-sign-out-alt me-2"></i>Déconnexion</a></li>
                 </ul>
             </div>
 
-            <!-- Logout Button for Mobile -->
+            <!-- Bouton Déconnexion pour mobile -->
             <div class="d-lg-none mt-3">
                 <a class="nav-link logout-btn" href="logout">
-                    <i class="fas fa-sign-out-alt"></i> Logout
+                    <i class="fas fa-sign-out-alt"></i> Déconnexion
                 </a>
             </div>
         </div>
     </nav>
 
 
-    <!-- Main Content -->
+    <!-- Contenu Principal -->
     <main class="main-content container-fluid">
         @yield('content')
     </main>
-    <!-- Bootstrap 5 JS and dependencies -->
+    <!-- Bootstrap 5 JS et dépendances -->
     <script src="js/dashboard.js"></script>
     <script src="js/navbar.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>

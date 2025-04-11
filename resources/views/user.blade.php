@@ -2,25 +2,23 @@
 
 @section('content')
     <div class="container">
-        <!-- Users Management Section -->
+        <!-- Section de gestion des utilisateurs -->
         <div class="row justify-content-center">
             <div class="col-md-10">
                 <div class="card shadow">
                     <div class="card-header bg-primary text-white py-3">
-                        <h4 class="mb-0">{{ __('Users Management') }}</h4>
+                        <h4 class="mb-0">{{ __('Gestion des utilisateurs') }}</h4>
                     </div>
 
                     <div class="card-body p-4">
                         <div class="mb-4 d-flex justify-content-between">
                             <button type="button" class="btn btn-primary shadow-sm" data-bs-toggle="modal"
                                 data-bs-target="#addUserModal">
-                                <i class="fas fa-user-plus me-2"></i> Add New User
+                                <i class="fas fa-user-plus me-2"></i> Ajouter un utilisateur
                             </button>
 
                             <div class="input-group w-50">
-                                <input type="text" class="form-control" placeholder="Search users..." id="userSearchInput">
-                                <button class="btn btn-outline-secondary" type="button"><i
-                                        class="fas fa-search"></i></button>
+                                <input type="text" class="form-control" placeholder="Rechercher un utilisateur..." id="userSearchInput">
                             </div>
                         </div>
 
@@ -29,9 +27,9 @@
                                 <thead class="table-light">
                                     <tr>
                                         <th>#</th>
-                                        <th>Name</th>
+                                        <th>Nom</th>
                                         <th>Email</th>
-                                        <th>Roles</th>
+                                        <th>Rôles</th>
                                         <th>Actions</th>
                                     </tr>
                                 </thead>
@@ -60,12 +58,12 @@
                                                         data-bs-target="#editUserModal" data-id="{{ $user->id }}"
                                                         data-name="{{ $user->name }}" data-email="{{ $user->email }}"
                                                         data-roles="{{ implode(',', $user->roles->pluck('id')->toArray()) }}">
-                                                        <i class="fas fa-edit"></i> Edit
+                                                        <i class="fas fa-edit"></i> Modifier
                                                     </button>
 
                                                     <button type="button" class="btn btn-sm btn-outline-danger"
                                                         onclick="confirmDelete({{ $user->id }})">
-                                                        <i class="fas fa-trash"></i> Delete
+                                                        <i class="fas fa-trash"></i> Supprimer
                                                     </button>
 
                                                     <form id="delete-form-{{ $user->id }}" action="{{ route('userDestroy', $user->id) }}"
@@ -85,19 +83,19 @@
             </div>
         </div>
 
-        <!-- Add User Modal -->
+        <!-- Modale Ajouter un utilisateur -->
         <div class="modal fade" id="addUserModal" tabindex="-1" aria-labelledby="addUserModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
                     <form action="{{ route('userStore') }}" method="POST">
                         @csrf
                         <div class="modal-header">
-                            <h5 class="modal-title" id="addUserModalLabel">Add New User</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            <h5 class="modal-title" id="addUserModalLabel">Ajouter un nouvel utilisateur</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fermer"></button>
                         </div>
                         <div class="modal-body">
                             <div class="mb-3">
-                                <label for="name" class="form-label">Name</label>
+                                <label for="name" class="form-label">Nom</label>
                                 <input type="text" class="form-control" name="name" required>
                             </div>
                             <div class="mb-3">
@@ -105,15 +103,15 @@
                                 <input type="email" class="form-control" name="email" required>
                             </div>
                             <div class="mb-3">
-                                <label for="password" class="form-label">Password</label>
+                                <label for="password" class="form-label">Mot de passe</label>
                                 <input type="password" class="form-control" name="password" required>
                             </div>
                             <div class="mb-3">
-                                <label for="password_confirmation" class="form-label">Confirm Password</label>
+                                <label for="password_confirmation" class="form-label">Confirmer le mot de passe</label>
                                 <input type="password" class="form-control" name="password_confirmation" required>
                             </div>
                             <div class="mb-3">
-                                <label for="roles" class="form-label">Assign Roles</label>
+                                <label for="roles" class="form-label">Attribuer des rôles</label>
                                 <select name="roles[]" class="form-control" multiple required>
                                     @foreach ($roles as $role)
                                         <option value="{{ $role->id }}">{{ $role->name }}</option>
@@ -122,15 +120,15 @@
                             </div>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            <button type="submit" class="btn btn-primary">Save User</button>
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+                            <button type="submit" class="btn btn-primary">Enregistrer l'utilisateur</button>
                         </div>
                     </form>
                 </div>
             </div>
         </div>
 
-        <!-- Edit User Modal -->
+        <!-- Modale Modifier un utilisateur -->
         <div class="modal fade" id="editUserModal" tabindex="-1" aria-labelledby="editUserModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
@@ -138,12 +136,12 @@
                         @csrf
                         @method('PUT')
                         <div class="modal-header">
-                            <h5 class="modal-title" id="editUserModalLabel">Edit User</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            <h5 class="modal-title" id="editUserModalLabel">Modifier l'utilisateur</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fermer"></button>
                         </div>
                         <div class="modal-body">
                             <div class="mb-3">
-                                <label for="editName" class="form-label">Name</label>
+                                <label for="editName" class="form-label">Nom</label>
                                 <input type="text" class="form-control" id="editName" name="name" required>
                             </div>
                             <div class="mb-3">
@@ -151,7 +149,7 @@
                                 <input type="email" class="form-control" id="editEmail" name="email" required>
                             </div>
                             <div class="mb-3">
-                                <label for="editRoles" class="form-label">Assign Roles</label>
+                                <label for="editRoles" class="form-label">Attribuer des rôles</label>
                                 <select name="roles[]" id="editRoles" class="form-control" multiple required>
                                     @foreach ($roles as $role)
                                         <option value="{{ $role->id }}">{{ $role->name }}</option>
@@ -160,8 +158,8 @@
                             </div>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            <button type="submit" class="btn btn-primary">Update User</button>
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+                            <button type="submit" class="btn btn-primary">Mettre à jour l'utilisateur</button>
                         </div>
                     </form>
                 </div>
@@ -169,7 +167,7 @@
         </div>
     </div>
 
-    <!-- SweetAlert2 CDN -->
+    <!-- CDN SweetAlert2 -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <script>
@@ -185,17 +183,17 @@
             @endif
         });
 
-        // Confirmation suppression
+        // Confirmation de suppression
         function confirmDelete(id) {
             Swal.fire({
-                title: 'Are you sure?',
-                text: "This action cannot be undone.",
+                title: 'Êtes-vous sûr ?',
+                text: "Cette action ne peut pas être annulée.",
                 icon: 'warning',
                 showCancelButton: true,
                 confirmButtonColor: '#e3342f',
                 cancelButtonColor: '#6c757d',
-                confirmButtonText: 'Yes, delete!',
-                cancelButtonText: 'Cancel'
+                confirmButtonText: 'Oui, supprimer !',
+                cancelButtonText: 'Annuler'
             }).then((result) => {
                 if (result.isConfirmed) {
                     document.getElementById('delete-form-' + id).submit();
@@ -203,7 +201,7 @@
             });
         }
 
-        // Remplir le formulaire d'édition
+        // Remplir le formulaire de modification
         const editModal = document.getElementById('editUserModal');
         editModal.addEventListener('show.bs.modal', function (event) {
             const button = event.relatedTarget;
@@ -224,7 +222,7 @@
             });
         });
 
-        // Search functionality
+        // Fonction de recherche
         document.getElementById('userSearchInput').addEventListener('keyup', function () {
             let input = this.value.toLowerCase();
             let rows = document.querySelectorAll("#usersTable tbody tr");

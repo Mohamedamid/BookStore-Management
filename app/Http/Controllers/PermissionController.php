@@ -22,7 +22,7 @@ class PermissionController extends Controller
         Permission::create(['name' => $request->name]);
 
         return redirect()->route('permissions')
-            ->with('status', 'Permission added successfully!')
+            ->with('status', 'Permission ajoutée avec succès !')
             ->with('status_type', 'success');
     }
 
@@ -35,7 +35,7 @@ class PermissionController extends Controller
         $permission->update(['name' => $request->name]);
 
         return redirect()->route('permissions')
-            ->with('status', 'Permission updated successfully!')
+            ->with('status', 'Permission mise à jour avec succès !')
             ->with('status_type', 'success');
     }
 
@@ -44,7 +44,7 @@ class PermissionController extends Controller
         $permission->delete();
 
         return redirect()->route('permissions')
-            ->with('status', 'Permission deleted successfully!')
-            ->with('status_type', 'danger');
+            ->with('status', 'Permission supprimée avec succès !')
+            ->with('status_type', 'success');
     }
 }

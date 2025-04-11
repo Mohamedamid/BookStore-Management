@@ -31,7 +31,10 @@ class BookController extends Controller
             'price' => $request->price,
         ]);
 
-        return redirect()->route('book.index')->with('success', 'Book created successfully!');
+        return redirect()->route('book.index')->with([
+            'status' => 'Le livre a été ajouté avec succès!', 
+            'status_type' => 'success'
+        ]);
     }
 
     // Update an existing book
@@ -53,13 +56,20 @@ class BookController extends Controller
             'price' => $request->price,
         ]);
 
-        return redirect()->route('book.index')->with('success', 'Book updated successfully!');
+        return redirect()->route('book.index')->with([
+            'status' => 'Le livre a été modifié avec succès!',
+            'status_type' => 'success',
+        ]);
     }
 
     // Delete a book
     public function destroy(Book $book)
     {
         $book->delete();
-        return redirect()->route('book.index')->with('success', 'Book deleted successfully!');
+        $book->delete();
+        return redirect()->route('book.index')->with([
+            'status' => 'Le livre a été supprimé avec succès!',
+            'status_type' => 'success',
+        ]);
     }
 }

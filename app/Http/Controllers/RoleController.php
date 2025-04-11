@@ -25,7 +25,7 @@ class RoleController extends Controller
         ]);
         $role->permissions()->sync($request->permissions); 
 
-        return redirect()->route('role')->with('status', 'Role created successfully!');
+        return redirect()->route('role')->with('status', 'Rôle créé avec succès !');
     }
 
     
@@ -46,7 +46,7 @@ class RoleController extends Controller
         ]);
         $role->permissions()->sync($request->permissions); 
 
-        return redirect()->route('role')->with('status', 'Role updated successfully!');
+        return redirect()->route('role')->with('status', 'Rôle mis à jour avec succès !');
     }
 
     
@@ -54,6 +54,6 @@ class RoleController extends Controller
     {
         $role = Role::findOrFail($id);
         $role->delete();
-        return redirect()->route('role')->with('status', 'Role deleted successfully!');
+        return redirect()->route('role')->with('status', 'Rôle supprimé avec succès !');
     }
 }

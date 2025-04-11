@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="images/image1.jpg">
-    <title>BookStore</title>
+    <title>Librairie</title>
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
@@ -18,8 +18,8 @@
 </head>
 <body class="d-flex align-items-center justify-content-center vh-100 bg-light">
     <div class="card shadow p-4" style="width: 400px;">
-    <img src="images/image1.jpg" alt="BookStore" class="img-fluid mx-auto d-block rounded mb-3" style="width: 100px; height: 100px;">
-        <h2 class="text-center text-primary mb-3">Login BookStore</h2>
+        <img src="images/image1.jpg" alt="Librairie" class="img-fluid mx-auto d-block rounded mb-3" style="width: 100px; height: 100px;">
+        <h2 class="text-center text-primary mb-3">BookStore</h2>
         
         <form action="{{ route('login') }}" method="post">
             @csrf

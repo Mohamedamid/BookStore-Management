@@ -12,12 +12,11 @@
                 <div class="card-body p-4">
                     <div class="mb-4 d-flex justify-content-between">
                         <button type="button" class="btn btn-primary shadow-sm" data-bs-toggle="modal" data-bs-target="#addPermissionModal">
-                            <i class="fas fa-plus-circle me-2"></i> Nouvelle Permission
+                            <i class="fas fa-plus me-2"></i> Nouvelle Permission
                         </button>
 
                         <div class="input-group w-50">
                             <input type="text" class="form-control" placeholder="Rechercher une permission..." id="permissionSearchInput">
-                            <button class="btn btn-outline-secondary" type="button"><i class="fas fa-search"></i></button>
                         </div>
                     </div>
 
