@@ -21,7 +21,7 @@
                     </div>
 
                     <div class="table-responsive">
-                        <table class="table table-hover align-middle" id="rolesTable">
+                        <table class="table table-hover align-middle text-center" id="rolesTable">
                             <thead class="table-light">
                                 <tr>
                                     <th>#</th>
@@ -43,7 +43,7 @@
                                             @endforeach
                                         </td>
                                         <td>
-                                            <div class="d-flex">
+                                            <div class="d-flex justify-content-center">
                                                 <button class="btn btn-sm btn-outline-primary me-2"
                                                     data-bs-toggle="modal"
                                                     data-bs-target="#editRoleModal"

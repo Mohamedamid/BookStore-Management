@@ -22,10 +22,11 @@
                             </div>
                         </div>
 
+                        <!-- Table centrée -->
                         <div class="table-responsive">
-                            <table class="table table-hover align-middle" id="usersTable">
+                            <table class="table table-hover mx-auto" id="usersTable">
                                 <thead class="table-light">
-                                    <tr>
+                                    <tr class="text-center">
                                         <th>#</th>
                                         <th>Nom</th>
                                         <th>Email</th>
@@ -36,7 +37,7 @@
                                 <tbody>
                                     @foreach ($users as $user)
                                         <tr>
-                                            <td>{{ $loop->iteration }}</td>
+                                            <td class="text-center">{{ $loop->iteration }}</td>
                                             <td>
                                                 <div class="d-flex align-items-center">
                                                     <div class="avatar bg-primary rounded-circle me-3 text-white fw-bold d-flex align-items-center justify-content-center"
@@ -46,14 +47,14 @@
                                                     <span>{{ $user->name }}</span>
                                                 </div>
                                             </td>
-                                            <td>{{ $user->email }}</td>
-                                            <td>
+                                            <td class="text-center">{{ $user->email }}</td>
+                                            <td class="text-center">
                                                 @foreach ($user->roles as $role)
                                                     <span class="badge bg-info rounded-pill text-dark">{{ $role->name }}</span>
                                                 @endforeach
                                             </td>
-                                            <td>
-                                                <div class="d-flex">
+                                            <td class="text-center">
+                                                <div class="d-flex justify-content-center">
                                                     <button class="btn btn-sm btn-outline-primary me-2" data-bs-toggle="modal"
                                                         data-bs-target="#editUserModal" data-id="{{ $user->id }}"
                                                         data-name="{{ $user->name }}" data-email="{{ $user->email }}"

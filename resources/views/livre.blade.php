@@ -1,7 +1,7 @@
 @extends('layouts.apps')
 
 @section('content')
-<div class="container ">
+<div class="container">
     <div class="row justify-content-center">
         <div class="col-md-10">
             <div class="card shadow">
@@ -21,7 +21,7 @@
                     </div>
 
                     <div class="table-responsive">
-                        <table class="table table-hover align-middle" id="booksTable">
+                        <table class="table table-hover align-middle text-center" id="booksTable">
                             <thead class="table-light">
                                 <tr>
                                     <th>#</th>
@@ -41,13 +41,13 @@
                                         <td>{{ $livre->niveau_academique }}</td>
                                         <td><span class="badge bg-secondary">{{ $livre->type }}</span></td>
                                         <td>
-                                            <span class="badge bg-{{ $livre->quantity > 10 ? 'success' : ($livre->quantity > 0 ? 'warning' : 'danger') }}">
+                                            <span class="badge bg-{{ $livre->quantity > 50 ? 'success' : ($livre->quantity > 10 ? 'warning' : 'danger') }}">
                                                 {{ $livre->quantity }}
                                             </span>
                                         </td>
-                                        <td>${{ number_format($livre->price, 2) }}</td>
+                                        <td>{{ number_format($livre->price, 2) }} DH</td>
                                         <td>
-                                            <div class="d-flex">
+                                            <div class="d-flex justify-content-center">
                                                 <button class="btn btn-sm btn-outline-primary me-2" data-bs-toggle="modal"
                                                     data-bs-target="#editBookModal"
                                                     data-id="{{ $livre->id }}"
@@ -102,7 +102,7 @@
                             <input type="number" name="quantity" class="form-control" min="0" required>
                         </div>
                         <div class="mb-3">
-                            <label class="form-label">Prix ($)</label>
+                            <label class="form-label">Prix (DH)</label>
                             <input type="number" name="price" class="form-control" min="0" step="0.01" required>
                         </div>
                     </div>
@@ -145,7 +145,7 @@
                             <input type="number" name="quantity" id="editQuantity" class="form-control" required>
                         </div>
                         <div class="mb-3">
-                            <label class="form-label">Prix ($)</label>
+                            <label class="form-label">Prix (DH)</label>
                             <input type="number" name="price" id="editPrice" class="form-control" step="0.01" required>
                         </div>
                     </div>
