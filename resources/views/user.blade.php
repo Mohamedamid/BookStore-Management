@@ -24,7 +24,7 @@
 
                         <!-- Table centrée -->
                         <div class="table-responsive">
-                            <table class="table table-hover mx-auto" id="usersTable">
+                            <table class="table table-hover align-middle text-center" id="usersTable">
                                 <thead class="table-light">
                                     <tr class="text-center">
                                         <th>#</th>
