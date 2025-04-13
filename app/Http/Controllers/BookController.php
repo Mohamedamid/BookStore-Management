@@ -9,7 +9,8 @@ class BookController extends Controller
 
     public function index()
     {
-        $livres = Book::all();
+        // ترتيب الكتب حسب الكمية تصاعديًا
+        $livres = Book::orderBy('quantity', 'asc')->get();
         return view('livre', compact('livres'));
     }
     // Store a new book
@@ -32,7 +33,7 @@ class BookController extends Controller
         ]);
 
         return redirect()->route('book.index')->with([
-            'status' => 'Le livre a été ajouté avec succès!', 
+            'status' => 'Le livre a été ajouté avec succès!',
             'status_type' => 'success'
         ]);
     }

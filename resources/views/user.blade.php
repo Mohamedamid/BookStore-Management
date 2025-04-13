@@ -4,7 +4,7 @@
     <div class="container">
         <!-- Section de gestion des utilisateurs -->
         <div class="row justify-content-center">
-            <div class="col-md-10">
+            <div class="col-md-12">
                 <div class="card shadow">
                     <div class="card-header bg-primary text-white py-3">
                         <h4 class="mb-0">{{ __('Gestion des utilisateurs') }}</h4>

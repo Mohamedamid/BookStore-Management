@@ -9,7 +9,7 @@ class FournitureController extends Controller
 {
     public function index()
     {
-        $fournitures = Fourniture::all();
+        $fournitures = Fourniture::orderBy('quantity', 'asc')->get();
         return view('outil', compact('fournitures'));
     }
 
