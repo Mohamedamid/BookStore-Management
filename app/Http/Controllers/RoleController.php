@@ -11,9 +11,12 @@ class RoleController extends Controller
     
     public function index()
     {
+        $userr = auth()->user();
+        $fullName = $userr->name; // مثال: "Mohamed Amine"
+        $firstName = explode(' ', $fullName)[0];
         $roles = Role::with('permissions')->get();
         $permissions = Permission::all();
-        return view('role', compact('roles', 'permissions'));
+        return view('role', compact('roles', 'permissions' ,'firstName'));
     }
 
     

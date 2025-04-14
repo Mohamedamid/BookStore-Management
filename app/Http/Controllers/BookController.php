@@ -9,9 +9,11 @@ class BookController extends Controller
 
     public function index()
     {
-        // ترتيب الكتب حسب الكمية تصاعديًا
+        $userr = auth()->user();
+        $fullName = $userr->name; // مثال: "Mohamed Amine"
+        $firstName = explode(' ', $fullName)[0];
         $livres = Book::orderBy('quantity', 'asc')->get();
-        return view('livre', compact('livres'));
+        return view('livre', compact('livres' , 'firstName'));
     }
     // Store a new book
     public function store(Request $request)

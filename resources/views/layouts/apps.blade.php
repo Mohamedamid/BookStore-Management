@@ -79,7 +79,7 @@
                     <div class="user-avatar">
                         <i class="fas fa-user"></i>
                     </div>
-                    <span class="d-none d-lg-inline text-white ms-1">Admin</span>
+                    <span class="d-none d-lg-inline text-white ms-1">{{ $firstName }}</span>
                 </a>
                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
                     <li><a class="dropdown-item" href="#"><i class="fas fa-user-circle me-2"></i>Profil</a></li>

@@ -9,8 +9,11 @@ class FournitureController extends Controller
 {
     public function index()
     {
+        $userr = auth()->user();
+        $fullName = $userr->name; // مثال: "Mohamed Amine"
+        $firstName = explode(' ', $fullName)[0];
         $fournitures = Fourniture::orderBy('quantity', 'asc')->get();
-        return view('outil', compact('fournitures'));
+        return view('outil', compact('fournitures' , 'firstName'));
     }
 
     public function store(Request $request)

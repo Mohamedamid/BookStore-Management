@@ -32,31 +32,37 @@
         }
     </style>
 
-    <!-- En-tête -->
-    <div class="mb-5">
-        <h2 class="fw-bold text-dark">📈 Tableau de bord</h2>
-        <p class="text-muted">Vue d'ensemble du système</p>
-    </div>
-
     <!-- Statistiques -->
     <div class="row g-4">
-        <div class="col-md-4">
+        <div class="col-md-3">
             <div class="dashboard-card d-flex justify-content-between align-items-center">
                 <div>
-                    <p class="text-muted mb-1">Les Commande</p>
-                    <h3 class="fw-bold text-primary">{{ $TotalUser }}</h3>
+                    <p class="text-muted mb-1">Les Commandes totales</p>
+                    <h3 class="fw-bold text-primary">{{ $totalOrders ?? 0 }}</h3>
                 </div>
                 <div class="icon-circle bg-primary text-white">
-                    <i class="fas fa-users"></i>
+                    <i class="fas fa-receipt"></i>
                 </div>
             </div>
         </div>
 
-        <div class="col-md-4">
+        <div class="col-md-3">
             <div class="dashboard-card d-flex justify-content-between align-items-center">
                 <div>
-                    <p class="text-muted mb-1">Livres (< 50 quantité)</p>
-                    <h3 class="fw-bold text-success">{{ $TotalLivre }}</h3>
+                    <p class="text-muted mb-1">Commandes aujourd'hui</p>
+                    <h3 class="fw-bold text-primary">{{ $todayOrders ?? 0 }}</h3>
+                </div>
+                <div class="icon-circle bg-info text-white">
+                    <i class="fas fa-calendar-day"></i>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="dashboard-card d-flex justify-content-between align-items-center">
+                <div>
+                    <p class="text-muted mb-1">Livres (&lt; 50)</p>
+                    <h3 class="fw-bold text-success">{{ $TotalLivre ?? 0 }}</h3>
                 </div>
                 <div class="icon-circle bg-success text-white">
                     <i class="fas fa-book"></i>
@@ -64,14 +70,14 @@
             </div>
         </div>
 
-        <div class="col-md-4">
+        <div class="col-md-3">
             <div class="dashboard-card d-flex justify-content-between align-items-center">
                 <div>
-                    <p class="text-muted mb-1">Fournitures (< 50 quantité)</p>
-                    <h3 class="fw-bold text-warning">{{ $TotalFourniture }}</h3>
+                    <p class="text-muted mb-1">Fournitures (&lt; 50)</p>
+                    <h3 class="fw-bold text-warning">{{ $TotalFourniture ?? 0 }}</h3>
                 </div>
                 <div class="icon-circle bg-warning text-white">
-                    <i class="fas fa-boxes"></i>
+                <i class="fa-solid fa-pen-ruler"></i>
                 </div>
             </div>
         </div>
@@ -82,7 +88,7 @@
         <!-- Livres -->
         <div class="col-lg-6 mb-4">
             <div class="dashboard-card">
-                <h5 class="section-title">📚 Livres avec quantité &lt; 50</h5>
+                <h5 class="section-title"><i class="fas fa-book"></i> Livres avec quantité &lt; 50</h5>
                 @if ($booksUnder50->count())
                     <ul class="list-group list-group-flush">
                         @foreach ($booksUnder50 as $book)
@@ -101,7 +107,7 @@
         <!-- Fournitures -->
         <div class="col-lg-6 mb-4">
             <div class="dashboard-card">
-                <h5 class="section-title">🛠️ Fournitures avec quantité &lt; 50</h5>
+                <h5 class="section-title"><i class="fa-solid fa-pen-ruler"></i> Fournitures avec quantité &lt; 50</h5>
                 @if ($fournituresUnder50->count())
                     <ul class="list-group list-group-flush">
                         @foreach ($fournituresUnder50 as $fourniture)

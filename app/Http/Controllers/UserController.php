@@ -9,14 +9,17 @@ use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
-    
+
     public function index()
     {
+        $userr = auth()->user();
+        $fullName = $userr->name; // مثال: "Mohamed Amine"
+        $firstName = explode(' ', $fullName)[0];
         $users = User::all();
         $roles = Role::all();
-        return view('user', compact('users', 'roles'));
+        return view('user', compact('users', 'roles', 'firstName'));
     }
-    
+
     public function create()
     {
         $roles = Role::all();
@@ -41,7 +44,7 @@ class UserController extends Controller
         $user->roles()->sync($request->roles);
 
         return redirect()->route('userIndex')->with('status', 'Utilisateur ajouté avec succès!')
-        ->with('status_type', 'success');
+            ->with('status_type', 'success');
     }
 
     public function edit(User $user)
@@ -49,7 +52,7 @@ class UserController extends Controller
         $roles = Role::all();
         return view('UserEdit', compact('user', 'roles'));
     }
-    
+
     public function update(Request $request, User $user)
     {
         $request->validate([
@@ -67,7 +70,7 @@ class UserController extends Controller
 
         return redirect()->route('userIndex')->with('status', 'Utilisateur modifié avec succès!')->with('status_type', 'success');
     }
-    
+
     public function destroy(User $user)
     {
         $user->delete();
