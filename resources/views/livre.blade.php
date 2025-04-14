@@ -87,6 +87,10 @@
                         </div>
                         <div class="modal-body">
                             <div class="mb-3">
+                                <label class="form-label">Reference</label>
+                                <input type="text" name="reference" class="form-control" required>
+                            </div>
+                            <div class="mb-3">
                                 <label class="form-label">Titre</label>
                                 <input type="text" name="title" class="form-control" required>
                             </div>

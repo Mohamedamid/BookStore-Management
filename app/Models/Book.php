@@ -12,6 +12,7 @@ class Book extends Model
     protected $table = 'Book'; // Nom de la table (facultatif si la convention est respectée)
 
     protected $fillable = [
+        'reference',
         'title',
         'niveau_academique',
         'type',

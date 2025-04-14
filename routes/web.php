@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BookController;
+use App\Http\Controllers\CommandeController;
 use App\Http\Controllers\FournitureController;
 use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\RoleController;
@@ -68,11 +69,12 @@ Route::middleware('auth')->group(function () {
     Route::get('/client', function () {
         return view('client');
     })->name('clients');
+    
+    Route::get('/commande', [CommandeController::class, 'create'])->name('create.create');
+    Route::post('/commande', [CommandeController::class, 'store'])->name('create.store');
 
-    Route::get('/commande', function () {
-        return view('commande');
-    })->name('commandes');
 });
+
 
 
 

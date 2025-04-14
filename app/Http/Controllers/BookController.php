@@ -19,6 +19,7 @@ class BookController extends Controller
     public function store(Request $request)
     {
         $request->validate([
+            'reference' => 'required|string|max:255',
             'title' => 'required|string|max:255',
             'niveau_academique' => 'required|string|max:255',
             'type' => 'required|string|max:255',
@@ -27,6 +28,7 @@ class BookController extends Controller
         ]);
 
         $book = Book::create([
+            'reference' => $request->reference,
             'title' => $request->title,
             'niveau_academique' => $request->niveau_academique,
             'type' => $request->type,

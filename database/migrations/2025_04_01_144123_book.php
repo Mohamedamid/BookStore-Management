@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('Book', function (Blueprint $table) {
             $table->id();
+            $table->string('reference')->unique();
             $table->string('title');
             $table->string('niveau_academique');
             $table->string('type');

@@ -15,6 +15,7 @@ class CreateFournituresTable extends Migration
     {
         Schema::create('fournitures', function (Blueprint $table) {
             $table->id();
+            $table->string('reference')->unique();
             $table->string('name');
             $table->integer('quantity');
             $table->decimal('price', 8, 2);

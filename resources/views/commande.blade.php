@@ -1,106 +1,130 @@
 @extends('layouts.apps')
 
 @section('content')
-    <div class="page-header d-flex justify-content-between align-items-center">
-        <h2>Dashboard Overview</h2>
+    <style>
+        body {
+            background-color: #f0f4f8;
+        }
+
+        .commande-card {
+            background: #ffffff;
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+            max-width: 800px;
+            margin: auto;
+        }
+
+        .form-label {
+            font-weight: 600;
+            color: #2c3e50;
+        }
+
+        .form-control {
+            border-radius: 10px;
+            border: 1px solid #ced4da;
+            transition: all 0.3s ease;
+        }
+
+        .form-control:focus {
+            border-color: #0d6efd;
+            box-shadow: 0 0 0 0.15rem rgba(13, 110, 253, 0.25);
+        }
+
+        .btn-custom {
+            border-radius: 8px;
+            padding: 10px 25px;
+        }
+
+        .btn-add {
+            background-color: #ecf0f1;
+            color: #2c3e50;
+            border: 1px solid #bdc3c7;
+        }
+
+        .btn-add:hover {
+            background-color: #d0d7de;
+        }
+
+        .btn-submit {
+            background-color: #0d6efd;
+            color: white;
+        }
+
+        .btn-submit:hover {
+            background-color: #084298;
+        }
+
+        .article-group {
+            background-color: #f8f9fa;
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            border-left: 4px solid #0d6efd;
+        }
+    </style>
+
+    <div class="container mt-5">
+        <div class="commande-card">
+            <h2 class="text-center mb-4 text-primary">Créer une Nouvelle Commande</h2>
+
+            <form action="{{ route('create.store') }}" method="POST">
+                @csrf
+
+                <div class="form-group mb-4">
+                    <label for="client_id" class="form-label">Client</label>
+                    <select name="client_id" id="client_id" class="form-control" required>
+                        <option value="">-- Sélectionner un client --</option>
+                        @foreach($clients as $client)
+                            <option value="{{ $client->id }}">{{ $client->nom }}</option>
+                        @endforeach
+                    </select>
+                </div>
+
+                <div id="articles">
+                    <div class="article-group">
+                        <label class="form-label">Produit</label>
+                        <select name="articles[0][article_id]" class="form-control" required>
+                            <option value="">-- Sélectionner un produit --</option>
+                            @foreach($books as $book)
+                                <option value="{{ $book->id }}">{{ $book->title }} - Livre</option>
+                            @endforeach
+                            @foreach($fournitures as $fourniture)
+                                <option value="{{ $fourniture->id }}">{{ $fourniture->name }} - Fourniture</option>
+                            @endforeach
+                        </select>
+                        <input type="number" name="articles[0][quantity]" class="form-control mt-2" placeholder="Quantité" required>
+                    </div>
+                </div>
+
+                <div class="d-flex justify-content-between">
+                    <button type="button" id="add-article" class="btn btn-add btn-custom">+ Ajouter un article</button>
+                    <button type="submit" class="btn btn-submit btn-custom">Valider la commande</button>
+                </div>
+            </form>
+        </div>
     </div>
 
-    <!-- Statistics Cards -->
-    <div class="row g-4">
-        <!-- Total Users -->
-        <div class="col-12 col-md-4">
-            <div class="card stat-card">
-                <div class="card-body">
-                    <div>
-                        <h5 class="card-title">Total Users</h5>
-                        <p class="card-text" style="color: var(--primary-color)">1,250</p>
-                    </div>
-                    <div class="icon-container" style="background-color: rgba(98, 0, 234, 0.1)">
-                        <i class="fas fa-users fa-2x" style="color: var(--primary-color)"></i>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Active Events -->
-        <div class="col-12 col-md-4">
-            <div class="card stat-card">
-                <div class="card-body">
-                    <div>
-                        <h5 class="card-title">Active Events</h5>
-                        <p class="card-text text-success">24</p>
-                    </div>
-                    <div class="icon-container bg-success bg-opacity-10">
-                        <i class="fas fa-calendar-alt fa-2x text-success"></i>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Clubs Created -->
-        <div class="col-12 col-md-4">
-            <div class="card stat-card">
-                <div class="card-body">
-                    <div>
-                        <h5 class="card-title">Clubs Created</h5>
-                        <p class="card-text text-warning">78</p>
-                    </div>
-                    <div class="icon-container bg-warning bg-opacity-10">
-                        <i class="fas fa-users fa-2x text-warning"></i>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Recent Activity Section -->
-    <div class="row mt-4">
-        <div class="col-12">
-            <div class="card">
-                <div class="card-header bg-white">
-                    <h5 class="mb-0">Recent Activities</h5>
-                </div>
-                <div class="card-body">
-                    <div class="list-group list-group-flush">
-                        <div class="list-group-item d-flex justify-content-between align-items-center border-0">
-                            <div class="d-flex align-items-center">
-                                <div class="bg-primary bg-opacity-10 p-3 rounded-circle me-3">
-                                    <i class="fas fa-user-plus text-primary"></i>
-                                </div>
-                                <div>
-                                    <h6 class="mb-0">New User Registration</h6>
-                                    <small class="text-muted">John Smith joined the platform</small>
-                                </div>
-                            </div>
-                            <small class="text-muted">Just now</small>
-                        </div>
-                        <div class="list-group-item d-flex justify-content-between align-items-center border-0">
-                            <div class="d-flex align-items-center">
-                                <div class="bg-success bg-opacity-10 p-3 rounded-circle me-3">
-                                    <i class="fas fa-calendar-plus text-success"></i>
-                                </div>
-                                <div>
-                                    <h6 class="mb-0">New Event Created</h6>
-                                    <small class="text-muted">Book Club Meeting scheduled for next week</small>
-                                </div>
-                            </div>
-                            <small class="text-muted">2 hours ago</small>
-                        </div>
-                        <div class="list-group-item d-flex justify-content-between align-items-center border-0">
-                            <div class="d-flex align-items-center">
-                                <div class="bg-warning bg-opacity-10 p-3 rounded-circle me-3">
-                                    <i class="fas fa-users text-warning"></i>
-                                </div>
-                                <div>
-                                    <h6 class="mb-0">New Club Created</h6>
-                                    <small class="text-muted">Science Fiction Club was created</small>
-                                </div>
-                            </div>
-                            <small class="text-muted">1 day ago</small>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+    <script>
+        let index = 1;
+        document.getElementById('add-article').addEventListener('click', function () {
+            const articleGroup = document.createElement('div');
+            articleGroup.classList.add('article-group');
+            articleGroup.innerHTML = `
+                <label class="form-label">Produit</label>
+                <select name="articles[${index}][article_id]" class="form-control" required>
+                    <option value="">-- Sélectionner un produit --</option>
+                    @foreach($books as $book)
+                        <option value="{{ $book->id }}">{{ $book->title }} - Livre</option>
+                    @endforeach
+                    @foreach($fournitures as $fourniture)
+                        <option value="{{ $fourniture->id }}">{{ $fourniture->name }} - Fourniture</option>
+                    @endforeach
+                </select>
+                <input type="number" name="articles[${index}][quantity]" class="form-control mt-2" placeholder="Quantité" required>
+            `;
+            document.getElementById('articles').appendChild(articleGroup);
+            index++;
+        });
+    </script>
 @endsection

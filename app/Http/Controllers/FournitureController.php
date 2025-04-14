@@ -19,12 +19,14 @@ class FournitureController extends Controller
     public function store(Request $request)
     {
         $request->validate([
+            'reference' => 'required|string|max:255',
             'name' => 'required|string|max:255',
             'quantity' => 'required|integer|min:0',
             'price' => 'required|numeric|min:0',
         ]);
 
         Fourniture::create([
+            'reference' => $request->reference,
             'name' => $request->name,
             'quantity' => $request->quantity,
             'price' => $request->price,

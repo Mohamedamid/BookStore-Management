@@ -48,7 +48,8 @@
                                                 <div class="d-flex justify-content-center">
                                                     <button class="btn btn-sm btn-outline-primary me-2" data-bs-toggle="modal"
                                                         data-bs-target="#editFournitureModal" data-id="{{ $fourniture->id }}"
-                                                        data-name="{{ $fourniture->name }}" data-quantity="{{ $fourniture->quantity }}"
+                                                        data-name="{{ $fourniture->name }}"
+                                                        data-quantity="{{ $fourniture->quantity }}"
                                                         data-price="{{ $fourniture->price }}">
                                                         <i class="fas fa-edit"></i> Modifier
                                                     </button>
@@ -70,7 +71,8 @@
         </div>
 
         <!-- Modal Ajouter Fourniture -->
-        <div class="modal fade" id="addFournitureModal" tabindex="-1" aria-labelledby="addFournitureModalLabel" aria-hidden="true">
+        <div class="modal fade" id="addFournitureModal" tabindex="-1" aria-labelledby="addFournitureModalLabel"
+            aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
                     <form action="{{ route('fourniture.store') }}" method="POST">
@@ -80,6 +82,10 @@
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fermer"></button>
                         </div>
                         <div class="modal-body">
+                            <div class="mb-3">
+                                <label class="form-label">Reference</label>
+                                <input type="text" name="reference" class="form-control" required>
+                            </div>
                             <div class="mb-3">
                                 <label class="form-label">Nom</label>
                                 <input type="text" name="name" class="form-control" required>
@@ -103,7 +109,8 @@
         </div>
 
         <!-- Modal Modifier Fourniture -->
-        <div class="modal fade" id="editFournitureModal" tabindex="-1" aria-labelledby="editFournitureModalLabel" aria-hidden="true">
+        <div class="modal fade" id="editFournitureModal" tabindex="-1" aria-labelledby="editFournitureModalLabel"
+            aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
                     <form method="POST" id="editFournitureForm">
@@ -152,7 +159,7 @@
                     timer: 2000
                 });
             @endif
-        });
+            });
 
         // Confirmation de suppression avec SweetAlert2
         function confirmDelete(fournitureId) {
