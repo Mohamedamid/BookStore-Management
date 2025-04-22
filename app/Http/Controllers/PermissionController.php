@@ -10,7 +10,7 @@ class PermissionController extends Controller
     public function index()
     {
         $userr = auth()->user();
-        $fullName = $userr->name; // مثال: "Mohamed Amine"
+        $fullName = $userr->name;
         $firstName = explode(' ', $fullName)[0];
         $permissions = Permission::all();
         return view('permission', compact('permissions' , 'firstName'));

@@ -26,6 +26,7 @@
                                 <thead class="table-light">
                                     <tr>
                                         <th>#</th>
+                                        <th>Reference</th>
                                         <th>Nom</th>
                                         <th>Quantité</th>
                                         <th>Prix</th>
@@ -36,6 +37,7 @@
                                     @foreach ($fournitures as $fourniture)
                                         <tr>
                                             <td>{{ $loop->iteration }}</td>
+                                            <td>{{ $fourniture->reference }}</td>
                                             <td>{{ $fourniture->name }}</td>
                                             <td>
                                                 <span

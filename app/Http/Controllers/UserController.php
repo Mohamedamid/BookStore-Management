@@ -13,7 +13,7 @@ class UserController extends Controller
     public function index()
     {
         $userr = auth()->user();
-        $fullName = $userr->name; // مثال: "Mohamed Amine"
+        $fullName = $userr->name;
         $firstName = explode(' ', $fullName)[0];
         $users = User::all();
         $roles = Role::all();

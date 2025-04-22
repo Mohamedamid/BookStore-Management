@@ -5,10 +5,12 @@ use App\Http\Controllers\BookController;
 use App\Http\Controllers\CommandeController;
 use App\Http\Controllers\FournitureController;
 use App\Http\Controllers\PermissionController;
+use App\Http\Controllers\ProduitController;
 use App\Http\Controllers\RoleController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\ClientController;
 
 Route::get('/login', [AuthController::class, 'showLogin'])->name('login');
 Route::post('/login', [AuthController::class, 'AuthLogin']);
@@ -38,15 +40,6 @@ Route::middleware('auth')->group(function () {
     // Route to delete a fourniture
     Route::delete('outil/{id}', [FournitureController::class, 'destroy'])->name('fournitures.destroy');
 
-    // Route to display all permissions
-    Route::get('/permission', [PermissionController::class, 'index'])->name('permissions');
-    // Route to store a new permission
-    Route::post('/permission', [PermissionController::class, 'store'])->name('addPermission');
-    // Route to update an existing permission
-    Route::put('/permission/{permission}', [PermissionController::class, 'update'])->name('updatePermission');
-    // Route to delete a permission
-    Route::delete('/permission/{permission}', [PermissionController::class, 'destroy'])->name('deletePermission');
-
     // Route to display all roles
     Route::get('/role', [RoleController::class, 'index'])->name('role');
     // Route to store a new role
@@ -55,7 +48,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/roles/{role}', [RoleController::class, 'destroy'])->name('deleteRole');
     // Route to update an existing role
     Route::put('/roles/{role}', [RoleController::class, 'update'])->name('updateRole');
-    
+
     // Route to display all users
     Route::get('/user', [UserController::class, 'index'])->name('userIndex');
     // Route to store the newly created user
@@ -65,13 +58,27 @@ Route::middleware('auth')->group(function () {
     // Route to delete the user
     Route::delete('/user/{user}', [UserController::class, 'destroy'])->name('userDestroy');
 
-    
-    Route::get('/client', function () {
-        return view('client');
-    })->name('clients');
-    
-    Route::get('/commande', [CommandeController::class, 'create'])->name('create.create');
-    Route::post('/commande', [CommandeController::class, 'store'])->name('create.store');
+    Route::get('/commande', [CommandeController::class, 'create'])->name('commandes.create');
+    // Route::post('/commande', [CommandeController::class, 'store'])->name('commandes.store');
+    Route::post('/commandes', [CommandeController::class, 'store']);
+
+    // Pour AJAX
+    Route::get('/clients/info/{id}', [ClientController::class, 'info']);
+
+
+    // Affiche la liste des clients
+    Route::get('/client', [ClientController::class, 'index'])->name('clients.index');
+    // Enregistre un nouveau client (formulaire d'ajout)
+    Route::post('/clients', [ClientController::class, 'store'])->name('clients.store');
+    // Met à jour un client existant
+    Route::put('/clients/{client}', [ClientController::class, 'update'])->name('clients.update');
+    // Supprime un client
+    Route::delete('/clients/{client}', [ClientController::class, 'destroy'])->name('clients.destroy');
+
+
+    Route::get('/ventes/create', [ProduitController::class, 'create'])->name('ventes.create');
+    Route::get('/produit/find/{reference}', [ProduitController::class, 'findProduct'])->name('produit.find');
+    Route::post('/ventes', [ProduitController::class, 'store'])->name('ventes.store');
 
 });
 

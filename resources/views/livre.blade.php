@@ -26,6 +26,7 @@
                                 <thead class="table-light">
                                     <tr>
                                         <th>#</th>
+                                        <th>Reference</th>
                                         <th>Titre</th>
                                         <th>Niveau académique</th>
                                         <th>Type</th>
@@ -38,6 +39,7 @@
                                     @foreach ($livres as $livre)
                                         <tr>
                                             <td>{{ $loop->iteration }}</td>
+                                            <td>{{ $livre->reference }}</td>
                                             <td>{{ $livre->title }}</td>
                                             <td>{{ $livre->niveau_academique }}</td>
                                             <td><span class="badge bg-secondary">{{ $livre->type }}</span></td>

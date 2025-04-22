@@ -15,7 +15,7 @@ class BookController extends Controller
         $livres = Book::orderBy('quantity', 'asc')->get();
         return view('livre', compact('livres' , 'firstName'));
     }
-    // Store a new book
+
     public function store(Request $request)
     {
         $request->validate([
@@ -42,7 +42,6 @@ class BookController extends Controller
         ]);
     }
 
-    // Update an existing book
     public function update(Request $request, Book $book)
     {
         $request->validate([
@@ -67,7 +66,6 @@ class BookController extends Controller
         ]);
     }
 
-    // Delete a book
     public function destroy(Book $book)
     {
         $book->delete();

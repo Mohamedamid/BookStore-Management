@@ -13,36 +13,25 @@ class DashboardController extends Controller
 {
 
     public function index()
-{
-    $userr = auth()->user();
-    $fullName = $userr->name; // Ex: "Mohamed Amine"
-    $firstName = explode(' ', $fullName)[0];
+    {
+        $userr = auth()->user();
+        $fullName = $userr->name;
+        $firstName = explode(' ', $fullName)[0];
 
-    // Totaux des utilisateurs
-    $TotalUser = User::count();
+        $TotalUser = User::count();
 
-    // Livres et fournitures < 50
-    $booksUnder50 = Book::where('quantity', '<', 50)->get();
-    $fournituresUnder50 = Fourniture::where('quantity', '<', 50)->get();
-    $TotalLivre = $booksUnder50->count();
-    $TotalFourniture = $fournituresUnder50->count();
+        $booksUnder50 = Book::where('quantity', '<', 50)->get();
+        $fournituresUnder50 = Fourniture::where('quantity', '<', 50)->get();
+        $TotalLivre = $booksUnder50->count();
+        $TotalFourniture = $fournituresUnder50->count();
 
-    // // Total des commandes (toutes)
-    // $totalOrders = Commande::count();
-
-    // // Total des commandes d’aujourd’hui
-    // $todayOrders = Commande::whereDate('created_at', Carbon::today())->count();
-
-    return view('home', compact(
-        'TotalUser',
-        'TotalLivre',
-        'TotalFourniture',
-        'booksUnder50',
-        'fournituresUnder50',
-        'firstName',
-        // 'totalOrders',
-        // 'todayOrders'
-    ));
-}
-
+        return view('home', compact(
+            'TotalUser',
+            'TotalLivre',
+            'TotalFourniture',
+            'booksUnder50',
+            'fournituresUnder50',
+            'firstName',
+        ));
+    }
 }
