@@ -29,55 +29,77 @@
             <i class="fas fa-bars"></i>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a class="nav-link" id="dashboardLink" href="/home">
-                        <i class="fas fa-tachometer-alt"></i> Tableau de bord
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" id="usersLink" href="/user">
-                        <i class="fas fa-users"></i> Utilisateurs
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" id="rolesLink" href="/role">
-                        <i class="fas fa-user-tag"></i> Rôles
-                    </a>
-                </li>
-                <!-- <li class="nav-item">
-                    <a class="nav-link" id="permissionsLink" href="/permission">
-                        <i class="fas fa-key"></i> Permissions
-                    </a>
-                </li> -->
-                <li class="nav-item">
-                    <a class="nav-link" id="livresLink" href="/livre">
-                        <i class="fas fa-book"></i> Livres
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" id="outilsLink" href="/outil">
-                    <i class="fa-solid fa-pen-ruler"></i> Fournitures
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" id="clientsLink" href="/client">
-                        <i class="fas fa-id-card"></i> Clients
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" id="commandesLink" href="/commande">
-                        <i class="fas fa-shop"></i> Commandes
-                    </a>
-                </li>
-            </ul>
+            <!-- Navigation Links -->
+<ul class="navbar-nav">
+    @if(auth()->user()->hasPermission('dashboard.view'))
+        <li class="nav-item">
+            <a class="nav-link" href="/home">
+                <i class="fas fa-tachometer-alt"></i> Tableau de bord
+            </a>
+        </li>
+    @endif
+
+    @if(auth()->user()->hasPermission('user.view'))
+        <li class="nav-item">
+            <a class="nav-link" href="/user">
+                <i class="fas fa-users"></i> Utilisateurs
+            </a>
+        </li>
+    @endif
+
+    @if(auth()->user()->hasPermission('role.view'))
+        <li class="nav-item">
+            <a class="nav-link" href="/role">
+                <i class="fas fa-user-tag"></i> Rôles
+            </a>
+        </li>
+    @endif
+
+    @if(auth()->user()->hasPermission('book.view'))
+        <li class="nav-item">
+            <a class="nav-link" href="/livre">
+                <i class="fas fa-book"></i> Livres
+            </a>
+        </li>
+    @endif
+
+    @if(auth()->user()->hasPermission('fourniture.view'))
+        <li class="nav-item">
+            <a class="nav-link" href="/outil">
+                <i class="fa-solid fa-pen-ruler"></i> Fournitures
+            </a>
+        </li>
+    @endif
+
+    @if(auth()->user()->hasPermission('client.view'))
+        <li class="nav-item">
+            <a class="nav-link" href="/client">
+                <i class="fas fa-id-card"></i> Clients
+            </a>
+        </li>
+    @endif
+
+    @if(auth()->user()->hasPermission('commande.create'))
+        <li class="nav-item">
+            <a class="nav-link" href="/commande">
+                <i class="fas fa-shop"></i> Commandes
+            </a>
+        </li>
+    @endif
+
+    <li class="nav-item">
+        <a class="nav-link" href="/Detail_commande">
+            <i class="fas fa-eye"></i> Détails
+        </a>
+    </li>
+</ul>
 
             <!-- Formulaire de Recherche -->
             <form class="search-form">
-                <input class="form-control" type="search" placeholder="Rechercher..." aria-label="Search">
+                <!-- <input class="form-control" type="search" placeholder="Rechercher..." aria-label="Search">
                 <button class="search-btn" type="submit">
                     <i class="fas fa-search"></i>
-                </button>
+                </button> -->
             </form>
 
             <!-- Menu déroulant Profil Utilisateur -->
@@ -90,11 +112,11 @@
                     <span class="d-none d-lg-inline text-white ms-1">{{ $firstName }}</span>
                 </a>
                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
-                    <li><a class="dropdown-item" href="#"><i class="fas fa-user-circle me-2"></i>Profil</a></li>
+                    <!-- <li><a class="dropdown-item" href="#"><i class="fas fa-user-circle me-2"></i>Profil</a></li>
                     <li><a class="dropdown-item" href="#"><i class="fas fa-cog me-2"></i>Paramètres</a></li>
                     <li>
                         <hr class="dropdown-divider">
-                    </li>
+                    </li> -->
                     <li><a class="dropdown-item" href="logout"><i class="fas fa-sign-out-alt me-2"></i>Déconnexion</a></li>
                 </ul>
             </div>

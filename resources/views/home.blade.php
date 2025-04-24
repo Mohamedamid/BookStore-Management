@@ -5,6 +5,7 @@
         body {
             background-color: #f5f7fa;
         }
+
         .dashboard-card {
             background: #fff;
             border-radius: 12px;
@@ -12,9 +13,11 @@
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
             transition: 0.3s ease;
         }
+
         .dashboard-card:hover {
             transform: translateY(-3px);
         }
+
         .icon-circle {
             width: 50px;
             height: 50px;
@@ -23,6 +26,7 @@
             border-radius: 50%;
             font-size: 1.5rem;
         }
+
         .section-title {
             font-weight: 700;
             color: #333;
@@ -37,8 +41,8 @@
         <div class="col-md-3">
             <div class="dashboard-card d-flex justify-content-between align-items-center">
                 <div>
-                    <p class="text-muted mb-1">Les Commandes totales</p>
-                    <h3 class="fw-bold text-primary">{{ $totalOrders ?? 0 }}</h3>
+                    <p class="text-muted mb-1">Total des Commandes</p>
+                    <h3 class="fw-bold text-primary">{{ $totalCommandes ?? 0 }}</h3>
                 </div>
                 <div class="icon-circle bg-primary text-white">
                     <i class="fas fa-receipt"></i>
@@ -49,11 +53,47 @@
         <div class="col-md-3">
             <div class="dashboard-card d-flex justify-content-between align-items-center">
                 <div>
-                    <p class="text-muted mb-1">Commandes aujourd'hui</p>
-                    <h3 class="fw-bold text-primary">{{ $todayOrders ?? 0 }}</h3>
+                    <p class="text-muted mb-1">Price des commande total </p>
+                    <h3 class="fw-bold text-primary">{{ $totalPriceCommandes ?? 0 }} DH</h3>
+                </div>
+                <div class="icon-circle bg-info text-white">
+                    <i class="fa fa-coins"></i>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="dashboard-card d-flex justify-content-between align-items-center">
+                <div>
+                    <p class="text-muted mb-1">Commandes d'aujourd'hui</p>
+                    <h3 class="fw-bold text-primary">{{ $commandesAujourdHui ?? 0 }}</h3>
                 </div>
                 <div class="icon-circle bg-info text-white">
                     <i class="fas fa-calendar-day"></i>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="dashboard-card d-flex justify-content-between align-items-center">
+                <div>
+                    <p class="text-muted mb-1">Price des commande d'aujourd'hui</p>
+                    <h3 class="fw-bold text-primary">{{ $totalPriceCommandesAujourdHui ?? 0 }} DH</h3>
+                </div>
+                <div class="icon-circle bg-info text-white">
+                    <i class="fas fa-money-bill-wave"></i>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="dashboard-card d-flex justify-content-between align-items-center">
+                <div>
+                    <p class="text-muted mb-1">Les Clients</p>
+                    <h3 class="fw-bold text-primary">{{ $totalClients ?? 0 }}</h3>
+                </div>
+                <div class="icon-circle bg-info text-white">
+                    <i class="fas fa-id-card"></i>
                 </div>
             </div>
         </div>
@@ -77,7 +117,7 @@
                     <h3 class="fw-bold text-warning">{{ $TotalFourniture ?? 0 }}</h3>
                 </div>
                 <div class="icon-circle bg-warning text-white">
-                <i class="fa-solid fa-pen-ruler"></i>
+                    <i class="fa-solid fa-pen-ruler"></i>
                 </div>
             </div>
         </div>

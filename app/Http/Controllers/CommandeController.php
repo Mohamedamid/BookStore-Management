@@ -66,4 +66,17 @@ public function store(Request $request)
         $client = Client::findOrFail($id);
         return response()->json($client);
     }
+
+    public function details($id)
+{
+    $commande = Commande::with('client')->findOrFail($id);
+
+    return response()->json([
+        'id' => $commande->id,
+        'created_at' => $commande->created_at,
+        'total' => $commande->total,
+        'client' => $commande->client,
+    ]);
+}
+
 }

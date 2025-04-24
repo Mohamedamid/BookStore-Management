@@ -11,10 +11,13 @@
 
                     <div class="card-body p-4">
                         <div class="mb-4 d-flex justify-content-between">
+                        @if(auth()->user()->hasPermission('book.create'))
+
                             <button type="button" class="btn btn-primary shadow-sm" data-bs-toggle="modal"
                                 data-bs-target="#addBookModal">
                                 <i class="fas fa-plus me-2"></i> Nouveau livre
                             </button>
+                        @endif
                             <div class="input-group w-50">
                                 <input type="text" class="form-control" placeholder="Rechercher des livres..."
                                     id="bookSearchInput">
@@ -52,6 +55,8 @@
                                             <td>{{ number_format($livre->price, 2) }} DH</td>
                                             <td>
                                                 <div class="d-flex justify-content-center">
+                                                @if(auth()->user()->hasPermission('book.update'))
+
                                                     <button class="btn btn-sm btn-outline-primary me-2" data-bs-toggle="modal"
                                                         data-bs-target="#editBookModal" data-id="{{ $livre->id }}"
                                                         data-title="{{ $livre->title }}"
@@ -60,11 +65,13 @@
                                                         data-price="{{ $livre->price }}">
                                                         <i class="fas fa-edit"></i> Modifier
                                                     </button>
-
+                                                @endif
+                                                    @if(auth()->user()->hasPermission('book.delete'))
                                                     <button type="button" class="btn btn-sm btn-outline-danger"
                                                         onclick="confirmDelete({{ $livre->id }})">
                                                         <i class="fas fa-trash"></i> Supprimer
                                                     </button>
+                                                    @endif
                                                 </div>
                                             </td>
                                         </tr>

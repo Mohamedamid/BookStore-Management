@@ -13,7 +13,7 @@ class PermissionFactory extends Factory
         'user.view', 'user.create', 'user.update', 'user.delete',
         'commande.create', 'commande.store',
         'client.view', 'client.create', 'client.update', 'client.delete',
-        'dashboard.view',
+        'dashboard.view','Detail.commande',
     ];
 
     public function definition(): array

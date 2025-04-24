@@ -76,25 +76,4 @@ class ProduitController extends Controller
             ], 500);
         }
     }
-
-    // public function store(Request $request)
-    // {
-    //     $validated = $request->validate([
-    //         'client_id' => 'required|exists:clients,id',
-    //         'items' => 'required|array',
-    //         'items.*.reference' => 'required',
-    //         'items.*.name' => 'required',
-    //         'items.*.quantity' => 'required|integer|min:1',
-    //         'items.*.price' => 'required|numeric|min:0',
-    //         'items.*.discount' => 'required|integer|min:0|max:100',
-    //         'total_amount' => 'required|numeric|min:0'
-    //     ]);
-
-    //     // Ici vous pouvez implémenter la logique d'enregistrement
-    //     // Exemple:
-    //     // $vente = Vente::create([...]);
-    //     // foreach($validated['items'] as $item) { VenteItem::create([...]); }
-
-    //     return response()->json(['success' => true, 'message' => 'Vente enregistrée']);
-    // }
 }
