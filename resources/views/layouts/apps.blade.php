@@ -33,7 +33,7 @@
 <ul class="navbar-nav">
     @if(auth()->user()->hasPermission('dashboard.view'))
         <li class="nav-item">
-            <a class="nav-link" href="/home">
+            <a class="nav-link" id="dashboardLink" href="/home">
                 <i class="fas fa-tachometer-alt"></i> Tableau de bord
             </a>
         </li>
@@ -41,7 +41,7 @@
 
     @if(auth()->user()->hasPermission('user.view'))
         <li class="nav-item">
-            <a class="nav-link" href="/user">
+            <a class="nav-link" id="usersLink" href="/user">
                 <i class="fas fa-users"></i> Utilisateurs
             </a>
         </li>
@@ -49,7 +49,7 @@
 
     @if(auth()->user()->hasPermission('role.view'))
         <li class="nav-item">
-            <a class="nav-link" href="/role">
+            <a class="nav-link" id="rolesLink" href="/role">
                 <i class="fas fa-user-tag"></i> Rôles
             </a>
         </li>
@@ -57,7 +57,7 @@
 
     @if(auth()->user()->hasPermission('book.view'))
         <li class="nav-item">
-            <a class="nav-link" href="/livre">
+            <a class="nav-link" id="livresLink" href="/livre">
                 <i class="fas fa-book"></i> Livres
             </a>
         </li>
