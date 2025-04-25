@@ -16,4 +16,6 @@ if (currentPath === "/home") {
     document.getElementById("clientsLink").classList.add("active");
 } else if (currentPath === "/commande") {
     document.getElementById("commandesLink").classList.add("active");
+} else if (currentPath === "/Detail_commande") {
+    document.getElementById("DetailCommande").classList.add("active");
 }

@@ -65,7 +65,7 @@
 
     @if(auth()->user()->hasPermission('fourniture.view'))
         <li class="nav-item">
-            <a class="nav-link" href="/outil">
+            <a class="nav-link" id="outilsLink" href="/outil">
                 <i class="fa-solid fa-pen-ruler"></i> Fournitures
             </a>
         </li>
@@ -73,7 +73,7 @@
 
     @if(auth()->user()->hasPermission('client.view'))
         <li class="nav-item">
-            <a class="nav-link" href="/client">
+            <a class="nav-link" id="clientsLink" href="/client">
                 <i class="fas fa-id-card"></i> Clients
             </a>
         </li>
@@ -81,17 +81,19 @@
 
     @if(auth()->user()->hasPermission('commande.create'))
         <li class="nav-item">
-            <a class="nav-link" href="/commande">
+            <a class="nav-link" id="commandesLink" href="/commande">
                 <i class="fas fa-shop"></i> Commandes
             </a>
         </li>
     @endif
 
+    @if(auth()->user()->hasPermission('Detail.commande'))
     <li class="nav-item">
-        <a class="nav-link" href="/Detail_commande">
+        <a class="nav-link" id="DetailCommande" href="/Detail_commande">
             <i class="fas fa-eye"></i> Détails
         </a>
     </li>
+    @endif
 </ul>
 
             <!-- Formulaire de Recherche -->
